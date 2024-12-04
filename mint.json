@@ -18,7 +18,7 @@
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "url": "support@trysuperdash.com"
     }
   ],
   "topbarCtaButton": {
@@ -77,16 +77,15 @@
     {
       "group": "Call",
       "pages": [
-        "api-reference/endpoint/Calls/create"
+        "api-reference/endpoint/Calls/post"
       ]
     },
  
     {
       "group": "Endpoint Examples",
       "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/create",
-        "api-reference/endpoint/delete"
+        "api-reference/endpoint/Calls/post"
+
       ]
     }
   ],

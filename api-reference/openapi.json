@@ -10,7 +10,7 @@
   },
   "servers": [
     {
-      "url": "https://voiceapi.superdashhq.com/api/v1"
+      "url": "https://voiceapi.superdashhq.com/api"
     }
   ],
   "paths": {
