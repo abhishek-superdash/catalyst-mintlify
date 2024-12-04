@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "OpenAPI Plant Store",
-    "description": "A sample API that uses a plant store as an example to demonstrate features in the OpenAPI specification",
+    "title": "OpenAPI Voice API",
+    "description": "A sample API that uses a voice API to demonstrate outbound call functionality",
     "license": {
       "name": "MIT"
     },
@@ -10,185 +10,188 @@
   },
   "servers": [
     {
-      "url": "http://sandbox.mintlify.com"
-    }
-  ],
-  "security": [
-    {
-      "bearerAuth": []
+      "url": "https://voiceapi.superdashhq.com/api/v1"
     }
   ],
   "paths": {
-    "/plants": {
-      "get": {
-        "description": "Returns all plants from the system that the user has access to",
+    "/place-outbound-call/{projectID}": {
+      "post": {
+        "description": "Use this API endpoint to immediately initiate a call to a specified number.",
         "parameters": [
           {
-            "name": "limit",
-            "in": "query",
-            "description": "The maximum number of results to return",
+            "name": "projectID",
+            "in": "path",
+            "required": true,
+            "description": "Your workspace ID or project ID",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           }
         ],
+        "requestBody": {
+          "description": "Details required to initiate the call",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fromNumber": {
+                    "type": "string",
+                    "description": "The number from which the call will be placed"
+                  },
+                  "toNumber": {
+                    "type": "string",
+                    "description": "The number to which the call will be placed"
+                  },
+                  "attributes": {
+                    "type": "object",
+                    "description": "Additional attributes for the call",
+                    "properties": {
+                      "customField1": {
+                        "type": "string",
+                        "description": "Any value you want to dynamically access while placing the call, like first name, last name, company name, etc."
+                      },
+                      "customField2": {
+                        "type": "string",
+                        "description": "Any value you want to dynamically access while placing the call, like first name, last name, company name, etc."
+                      },
+                      "customField3": {
+                        "type": "string",
+                        "description": "Any value you want to dynamically access while placing the call, like first name, last name, company name, etc."
+                      }
+                    }
+                  }
+                },
+                "required": ["fromNumber", "toNumber"]
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
-            "description": "Plant response",
+            "description": "Call placed successfully",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Plant"
+                  "type": "object",
+                  "properties": {
+                    "msg": {
+                      "type": "string",
+                      "description": "Confirmation message indicating the call was placed"
+                    }
+                  },
+                  "example": {
+                    "msg": "Call placed to {toNumber}"
                   }
                 }
               }
             }
           },
           "400": {
-            "description": "Unexpected error",
+            "description": "Bad request due to invalid input",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code for the error"
+                    },
+                    "code": {
+                      "type": "integer",
+                      "description": "Application-specific error code"
+                    },
+                    "moreInfo": {
+                      "type": "string",
+                      "description": "URL with more information about the error"
+                    }
+                  },
+                  "example": {
+                    "status": 400,
+                    "code": "Error code",
+                    "moreInfo": "Link to read about the error "
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code for the error"
+                    }
+                  },
+                  "example": {
+                    "status": 401,
+                    "msg": "Api key is not valid"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code for the error"
+                    }
+                  },
+                  "example": {
+                    "status": 403,
+                    "msg": "Api key is not valid"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code for the error"
+                    }
+                  },
+                  "example": {
+                    "status": 500,
+                    "msg": "Server Error"
+                  }
                 }
               }
             }
           }
-        }
-      },
-      "post": {
-        "description": "Creates a new plant in the store",
-        "requestBody": {
-          "description": "Plant to add to the store",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewPlant"
-              }
-            }
-          },
-          "required": true
         },
-        "responses": {
-          "200": {
-            "description": "plant response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Plant"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/plants/{id}": {
-      "delete": {
-        "description": "Deletes a single plant based on the ID supplied",
-        "parameters": [
+        "security": [
           {
-            "name": "id",
-            "in": "path",
-            "description": "ID of plant to delete",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
+            "apiKeyAuth": []
           }
-        ],
-        "responses": {
-          "204": {
-            "description": "Plant deleted",
-            "content": {}
-          },
-          "400": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        }
+        ]
       }
     }
   },
   "components": {
-    "schemas": {
-      "Plant": {
-        "required": [
-          "name"
-        ],
-        "type": "object",
-        "properties": {
-          "name": {
-            "description": "The name of the plant",
-            "type": "string"
-          },
-          "tag": {
-            "description": "Tag to specify the type",
-            "type": "string"
-          }
-        }
-      },
-      "NewPlant": {
-        "allOf": [
-          {
-            "$ref": "#/components/schemas/Plant"
-          },
-          {
-            "required": [
-              "id"
-            ],
-            "type": "object",
-            "properties": {
-              "id": {
-                "description": "Identification number of the plant",
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ]
-      },
-      "Error": {
-        "required": [
-          "error",
-          "message"
-        ],
-        "type": "object",
-        "properties": {
-          "error": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "message": {
-            "type": "string"
-          }
-        }
-      }
-    },
     "securitySchemes": {
-      "bearerAuth": {
-        "type": "http",
-        "scheme": "bearer"
+      "apiKeyAuth": {
+        "type": "apiKey",
+        "name": "x-api-key",
+        "in": "header"
       }
     }
   }

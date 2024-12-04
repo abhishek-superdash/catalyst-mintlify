@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "Superdash",
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
@@ -75,11 +75,9 @@
       ]
     },
     {
-      "group": "Calls",
+      "group": "Call",
       "pages": [
-        "api-reference/endpoint/Calls/get",
-        "api-reference/endpoint/Calls/create",
-        "api-reference/endpoint/Calls/delete"
+        "api-reference/endpoint/Calls/create"
       ]
     },
  
