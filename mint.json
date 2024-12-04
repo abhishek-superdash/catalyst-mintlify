@@ -77,43 +77,12 @@
     {
       "group": "Calls",
       "pages": [
-        "api-reference/endpoint/calls/get",
-        "api-reference/endpoint/calls/create",
-        "api-reference/endpoint/calls/delete"
+        "api-reference/endpoint/Calls/get",
+        "api-reference/endpoint/Calls/create",
+        "api-reference/endpoint/Calls/delete"
       ]
     },
-    {
-      "group": "SMS",
-      "pages": [
-        "api-reference/endpoint/sms/get",
-        "api-reference/endpoint/sms/create",
-        "api-reference/endpoint/sms/delete"
-      ]
-    },
-    {
-      "group": "Conversations",
-      "pages": [
-        "api-reference/endpoint/sms/get",
-        "api-reference/endpoint/sms/create",
-        "api-reference/endpoint/sms/delete"
-      ]
-    },
-    {
-      "group": "Knowledgebase",
-      "pages": [
-        "api-reference/endpoint/sms/get",
-        "api-reference/endpoint/sms/create",
-        "api-reference/endpoint/sms/delete"
-      ]
-    },
-    {
-      "group": "Train models",
-      "pages": [
-        "api-reference/endpoint/sms/get",
-        "api-reference/endpoint/sms/create",
-        "api-reference/endpoint/sms/delete"
-      ]
-    },
+ 
     {
       "group": "Endpoint Examples",
       "pages": [
