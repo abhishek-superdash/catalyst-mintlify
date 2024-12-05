@@ -10,10 +10,198 @@
   },
   "servers": [
     {
-      "url": "https://voiceapi.superdashhq.com/api/"
+      "url": "https://api.superdashhq.com/api/"
     }
   ],
-  "paths": {
+    "paths": {
+      "/v1/campaigns/createCampaign/{projectID}": {
+        "post": {
+          "description": "Use this API endpoint to immediately initiate a call or SMS to a specified number.",
+          "parameters": [
+            {
+              "name": "projectID",
+              "in": "path",
+              "required": true,
+              "description": "Your workspace ID or project ID",
+              "schema": {
+                "type": "string"
+              }
+            }
+          ],
+          "requestBody": {
+            "description": "Details required to initiate the communication",
+            "required": true,
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "fromNumber": {
+                      "type": "string",
+                      "description": "The number from which the call or SMS will be sent"
+                    },
+                    "toNumber": {
+                      "type": "string",
+                      "description": "The number to which the call or SMS will be sent"
+                    },
+                    "message": {
+                      "type": "string",
+                      "description": "The message content (optional, required for SMS campaigns)",
+                      "nullable": true
+                    },
+                    "triggerType": {
+                      "type": "string",
+                      "description": "The type of trigger to initiate the communication",
+                      "enum": ["triggerImmediately", "triggerBasedOnCampaign"]
+                    },
+                    "campaignType": {
+                      "type": "string",
+                      "description": "The type of campaign",
+                      "enum": ["SMS", "CALL"]
+                    },
+                    "attributes": {
+                      "type": "object",
+                      "description": "Additional attributes for the communication",
+                      "properties": {
+                        "customField1": {
+                          "type": "string",
+                          "description": "Any value you want to dynamically access while placing the call or sending the SMS, like first name, last name, company name, etc."
+                        },
+                        "customField2": {
+                          "type": "string",
+                          "description": "Any value you want to dynamically access while placing the call or sending the SMS, like first name, last name, company name, etc."
+                        },
+                        "customField3": {
+                          "type": "string",
+                          "description": "Any value you want to dynamically access while placing the call or sending the SMS, like first name, last name, company name, etc."
+                        }
+                      }
+                    }
+                  },
+                  "required": ["fromNumber", "toNumber", "triggerType", "campaignType"]
+                }
+              }
+            }
+          },
+          "responses": {
+            "200": {
+              "description": "Communication initiated successfully",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "msg": {
+                        "type": "string",
+                        "description": "Confirmation message indicating the call or SMS was placed"
+                      }
+                    },
+                    "example": {
+                      "msg": "Call or SMS sent to {toNumber}"
+                    }
+                  }
+                }
+              }
+            },
+            "400": {
+              "description": "Bad request due to invalid input",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "integer",
+                        "description": "HTTP status code for the error"
+                      },
+                      "code": {
+                        "type": "integer",
+                        "description": "Application-specific error code"
+                      },
+                      "moreInfo": {
+                        "type": "string",
+                        "description": "URL with more information about the error"
+                      }
+                    },
+                    "example": {
+                      "status": 400,
+                      "code": "Error code",
+                      "moreInfo": "Link to read about the error"
+                    }
+                  }
+                }
+              }
+            },
+            "401": {
+              "description": "Unauthorized",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "integer",
+                        "description": "HTTP status code for the error"
+                      }
+                    },
+                    "example": {
+                      "status": 401,
+                      "msg": "API key is not valid"
+                    }
+                  }
+                }
+              }
+            },
+            "403": {
+              "description": "Forbidden",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "integer",
+                        "description": "HTTP status code for the error"
+                      }
+                    },
+                    "example": {
+                      "status": 403,
+                      "msg": "API key is not valid"
+                    }
+                  }
+                }
+              }
+            },
+            "500": {
+              "description": "Internal server error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "integer",
+                        "description": "HTTP status code for the error"
+                      }
+                    },
+                    "example": {
+                      "status": 500,
+                      "msg": "Server Error"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "security": [
+            {
+              "apiKeyAuth": []
+            }
+          ]
+        }
+      }
+  },
+
     "/v1/place-outbound-call/{projectID}": {
       "post": {
         "description": "Use this API endpoint to immediately initiate a call to a specified number.",
@@ -186,6 +374,7 @@
       }
     }
   },
+  
   "components": {
     "securitySchemes": {
       "apiKeyAuth": {
