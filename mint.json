@@ -90,6 +90,14 @@
         "api-reference/endpoint/SMS/new-sms-thread",
         "api-reference/endpoint/SMS/continue-sms-thread"
       ]
+    },
+    {
+      "group": "CHAT",
+      "pages": [
+        "api-reference/endpoint/CHAT/new-conversation",
+        "api-reference/endpoint/CHAT/continue-conversation",
+        "api-reference/endpoint/CHAT/fetch-conversation"
+      ]
     }
   ],
   "footerSocials": {
