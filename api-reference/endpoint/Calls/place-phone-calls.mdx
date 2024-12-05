@@ -1,5 +1,73 @@
 ---
 title: 'Place Phone Calls'
-openapi: 'POST /v1/place-outbound-call/{projectID}'
-description: "Use this API endpoint to initiate an immediate call to the user."
+api: 'POST /place-outbound-call/{projectID}'
+description: "Use this API endpoint to immediately initiate a call to a specified number."
 ---
+### Authorizations
+<ParamField header="x-api-key" type="string" required/>
+
+### Path Parameters
+<ParamField path="projectID" type="string" required>
+Your workspace ID
+</ParamField>
+
+### Body Parameters
+___
+<ParamField body="fromNumber" type="string" required>
+The number from which the call will be placed
+</ParamField>
+<ParamField body="toNumber" type="string" required>
+The number to which the call will be placed
+</ParamField>
+<ParamField body="attributes" type="object">
+Additional attributes for the call
+    <Expandable title="Properties">
+    <ParamField body="customField1" type="string">
+      Any value you want to dynamically access while placing the call, like first name, last name, company name, etc.
+    </ParamField>
+    <ParamField body="customField2" type="string">
+      Any value you want to dynamically access while placing the call, like first name, last name, company name, etc.
+    </ParamField>
+    <ParamField body="customField3" type="string">
+      Any value you want to dynamically access while placing the call, like first name, last name, company name, etc.
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+### Response
+___
+<ResponseField name="msg" type="string">
+  Confirmation message indicating the call was placed
+</ResponseField>
+
+<ResponseExample>
+   ```json 200
+{ "msg": "call placed to {toNumber}" }
+```
+```json 400
+{
+  "status": 400,
+  "code": "Error code",
+  "moreInfo": "Link to read about the error "
+}
+```
+```json 401
+{
+  "status": 401,
+  "msg": "Api key is not valid"
+}
+```
+```json 403
+{
+  "status": 403,
+  "msg": "Api key is not valid"
+}
+```
+```json 500
+{
+  "status": 500,
+  "msg": "Server Error"
+}
+```
+</ResponseExample>
+
