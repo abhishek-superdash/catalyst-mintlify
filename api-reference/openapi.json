@@ -199,8 +199,7 @@
             }
           ]
         }
-      }
-  },
+      },
 
     "/v1/place-outbound-call/{projectID}": {
       "post": {
