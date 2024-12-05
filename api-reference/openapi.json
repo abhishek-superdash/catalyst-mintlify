@@ -10,11 +10,11 @@
   },
   "servers": [
     {
-      "url": "https://voiceapi.superdashhq.com/api"
+      "url": "https://voiceapi.superdashhq.com/api/"
     }
   ],
   "paths": {
-    "/place-outbound-call/{projectID}": {
+    "/v1/place-outbound-call/{projectID}": {
       "post": {
         "description": "Use this API endpoint to immediately initiate a call to a specified number.",
         "parameters": [

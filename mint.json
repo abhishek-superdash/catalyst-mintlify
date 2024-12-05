@@ -77,15 +77,8 @@
     {
       "group": "Call",
       "pages": [
-        "api-reference/endpoint/Calls/post"
-      ]
-    },
- 
-    {
-      "group": "Endpoint Examples",
-      "pages": [
-        "api-reference/endpoint/Calls/post"
-
+        "api-reference/endpoint/Calls/place-phone-calls",
+        "api-reference/endpoint/Calls/place-phone-calls-campaigns"
       ]
     }
   ],
