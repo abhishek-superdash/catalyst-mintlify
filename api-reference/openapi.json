@@ -152,6 +152,26 @@
                 }
               }
             },
+            "402": {
+              "description": "Payment error",
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "status": {
+                        "type": "integer",
+                        "description": "HTTP status code for the error"
+                      }
+                    },
+                    "example": {
+                      "status": 402,
+                      "msg": "Please upgrade your account to continue"
+                    }
+                  }
+                }
+              }
+            },
             "403": {
               "description": "Forbidden",
               "content": {
@@ -324,6 +344,26 @@
               }
             }
           },
+          "402": {
+            "description": "Payment error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code for the error"
+                    }
+                  },
+                  "example": {
+                    "status": 402,
+                    "msg": "Please upgrade your account to continue"
+                  }
+                }
+              }
+            }
+          },
           "403": {
             "description": "Forbidden",
             "content": {
@@ -371,7 +411,381 @@
           }
         ]
       }
+    },
+
+    "/v1/twilio/startsmsthread/{projectID}": {
+      "post": {
+        "description": "Use this API endpoint to start a new SMS thread",
+        "parameters": [
+          {
+            "name": "projectID",
+            "in": "path",
+            "required": true,
+            "description": "Your workspace ID or project ID.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Details required to initiate the SMS thread.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fromNumber": {
+                    "type": "string",
+                    "description": "The number from which the SMS will be sent."
+                  },
+                  "toNumber": {
+                    "type": "string",
+                    "description": "The number to which the SMS will be sent."
+                  },
+                  "message": {
+                    "type": "string",
+                    "description": "The message content."
+                  },
+                  "attributes": {
+                    "type": "object",
+                    "description": "Additional attributes for the communication",
+                    "properties": {
+                      "customField1": {
+                        "type": "string",
+                        "description": "Any value you want to dynamically access while placing the call or sending the SMS, like first name, last name, company name, etc."
+                      },
+                      "customField2": {
+                        "type": "string",
+                        "description": "Any value you want to dynamically access while placing the call or sending the SMS, like first name, last name, company name, etc."
+                      },
+                      "customField3": {
+                        "type": "string",
+                        "description": "Any value you want to dynamically access while placing the call or sending the SMS, like first name, last name, company name, etc."
+                      }
+                    }
+                  }
+                },
+                "required": ["fromNumber", "toNumber", "message"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Communication initiated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "msg": {
+                      "type": "string",
+                      "description": "Confirmation message indicating the call or SMS was placed"
+                    }
+                  },
+                  "example": {
+                    "msg": "Outbound SMS succesfully sent"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request due to invalid input.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "msg": {
+                      "type": "string",
+                      "description": "Error message"
+                    }
+                  },
+                  "example": {
+                    "msg": "To number is required in the request body"
+                }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code for the error"
+                    }
+                  },
+                  "example": {
+                    "status": 401,
+                    "msg": "Api key is not valid"
+                  }
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code for the error"
+                    }
+                  },
+                  "example": {
+                    "status": 402,
+                    "msg": "Please upgrade your account to continue"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code for the error"
+                    }
+                  },
+                  "example": {
+                    "status": 403,
+                    "msg": "Api key is not valid"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code for the error"
+                    }
+                  },
+                  "example": {
+                    "status": 500,
+                    "msg": "Server Error"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
+    },
+    "/v1/twilio/addtosmsthread/{projectID}": {
+      "post": {
+        "description": "Use this API endpoint to start a new SMS thread",
+        "parameters": [
+          {
+            "name": "projectID",
+            "in": "path",
+            "required": true,
+            "description": "Your workspace ID or project ID.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Details required to initiate the SMS thread.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "fromNumber": {
+                    "type": "string",
+                    "description": "The number from which the SMS will be sent."
+                  },
+                  "toNumber": {
+                    "type": "string",
+                    "description": "The number to which the SMS will be sent."
+                  },
+                  "message": {
+                    "type": "string",
+                    "description": "The message content."
+                  },
+                  "attributes": {
+                    "type": "object",
+                    "description": "Additional attributes for the communication",
+                    "properties": {
+                      "customField1": {
+                        "type": "string",
+                        "description": "Any value you want to dynamically access while placing the call or sending the SMS, like first name, last name, company name, etc."
+                      },
+                      "customField2": {
+                        "type": "string",
+                        "description": "Any value you want to dynamically access while placing the call or sending the SMS, like first name, last name, company name, etc."
+                      },
+                      "customField3": {
+                        "type": "string",
+                        "description": "Any value you want to dynamically access while placing the call or sending the SMS, like first name, last name, company name, etc."
+                      }
+                    }
+                  }
+                },
+                "required": ["fromNumber", "toNumber", "message"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Communication initiated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "msg": {
+                      "type": "string",
+                      "description": "Confirmation message indicating the call or SMS was placed"
+                    }
+                  },
+                  "example": {
+                    "msg": "Outbound SMS succesfully sent"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request due to invalid input.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "msg": {
+                      "type": "string",
+                      "description": "Error message"
+                    }
+                  },
+                  "example": {
+                    "msg": "To number is required in the request body"
+                }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code for the error"
+                    }
+                  },
+                  "example": {
+                    "status": 401,
+                    "msg": "Api key is not valid"
+                  }
+                }
+              }
+            }
+          },
+
+          "402": {
+            "description": "Payment error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code for the error"
+                    }
+                  },
+                  "example": {
+                    "status": 402,
+                    "msg": "Please upgrade your account to continue"
+                  }
+                }
+              }
+            }
+          },
+
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code for the error"
+                    }
+                  },
+                  "example": {
+                    "status": 403,
+                    "msg": "Forbidden"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "description": "HTTP status code for the error"
+                    }
+                  },
+                  "example": {
+                    "status": 500,
+                    "msg": "Server Error"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apiKeyAuth": []
+          }
+        ]
+      }
     }
+    
   },
   
   "components": {

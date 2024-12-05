@@ -83,6 +83,13 @@
         "api-reference/endpoint/Calls/place-phone-calls",
         "api-reference/endpoint/Calls/place-phone-calls-campaigns"
       ]
+    },
+    {
+      "group": "SMS",
+      "pages": [
+        "api-reference/endpoint/SMS/new-sms-thread",
+        "api-reference/endpoint/SMS/continue-sms-thread"
+      ]
     }
   ],
   "footerSocials": {
