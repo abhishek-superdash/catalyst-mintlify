@@ -3,8 +3,7 @@
   "name": "Superdash",
   "logo": {
     "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg",
-    "href": "https://www.superdash.ai/"
+    "light": "/logo/light.svg"
   },
   "favicon": "/favicon.svg",
   "colors": {
@@ -22,16 +21,52 @@
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:support@trysuperdash.com"
+      "url": "support@trysuperdash.com"
     }
   ],
+  "topbarCtaButton": {
+    "name": "Dashboard",
+    "url": "https://dashboard.mintlify.com"
+  },
   "tabs": [
     {
       "name": "API Reference",
       "url": "api-reference"
     }
   ],
+  "anchors": [
+
+    {
+      "name": "Community",
+      "icon": "slack",
+      "url": "https://mintlify.com/community"
+    },
+    {
+      "name": "Enterprise",
+      "icon": "newspaper",
+      "url": "https://mintlify.com/blog"
+    }
+  ],
   "navigation": [
+    {
+      "group": "Get Started",
+      "pages": [
+        "introduction",
+        "quickstart",
+        "development"
+      ]
+    },
+    {
+      "group": "Essentials",
+      "pages": [
+        "essentials/markdown",
+        "essentials/code",
+        "essentials/images",
+        "essentials/settings",
+        "essentials/navigation",
+        "essentials/reusable-snippets"
+      ]
+    },
     {
       "group": "Call",
       "pages": [
@@ -56,7 +91,8 @@
     }
   ],
   "footerSocials": {
-    "discord": "https://discord.com/invite/DgEDVtMe",
-    "linkedin": "https://www.linkedin.com/company/superdashhq/"
+    "x": "https://x.com/mintlify",
+    "github": "https://github.com/mintlify",
+    "linkedin": "https://linkedin.com/company/mintlify"
   }
 }
