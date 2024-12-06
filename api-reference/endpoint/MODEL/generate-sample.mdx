@@ -1,0 +1,71 @@
+---
+title: 'Generate Sample Training Data'
+openapi: 'POST /v1/finetuning/generateResponse/{:projectId}'
+description: "Generate a training sample response using this API to add to your training samples. The query from the API request and the response received in the API response will be used to generate a training sample, whose ID will be returned in the request body as well."
+---
+### Authorizations
+<ParamField header="x-api-key" type="string" required>
+API key associated with your project/workspace
+</ParamField>
+
+
+### Body Parameters
+___
+<ParamField body="query" type="string" required>
+The UUID associated with a project/workspace.
+</ParamField>
+<ParamField body="attributes" type="object" required>
+The question to be submitted to the LLM
+</ParamField>
+
+### Response
+___
+<ResponseField name="response" type="string">
+ The sample response generated.
+</ResponseField>
+<ResponseField name="trainingId" type="string">
+The ID associated with the conversation.
+</ResponseField>
+<ResponseField name="modelUsed" type="string">
+Th model used to generate the response.
+</ResponseField>
+
+<ResponseExample>
+   ```json 200
+{"response" : "sample response generated", "trainingId": "sample training id", "modelUsed": "model used to generate the response"}
+
+```
+```json 400
+{
+  "status": 400,
+  "code": "Error code",
+  "moreInfo": "Link to read about the error "
+}
+```
+```json 401
+{
+  "status": 401,
+  "msg": "Api key is not valid"
+}
+```
+```json 402
+{
+  "status": 402,
+  "msg": "Please upgrade your account to continue"
+}
+```
+```json 403
+{
+  "status": 403,
+  "msg": "Forbidden"
+}
+```
+```json 500
+{
+  "status": 500,
+  "msg": "Server Error"
+}
+```
+</ResponseExample>
+
+

@@ -1,0 +1,70 @@
+---
+title: 'List all models'
+openapi: 'GET v1/trainingSamples/listTrainingSamples/{:projectId}'
+---
+### Authorizations
+<ParamField header="x-api-key" type="string" required>
+API key associated with your project/workspace
+</ParamField>
+
+
+### Body Parameters
+___
+<ParamField body="userIdentifier" type="string" required>
+Unique customerID used to store the customer conversation.
+</ParamField>
+<ParamField body="projectId" type="string" required>
+The UUID associated with a project/workspace.
+</ParamField>
+<ParamField body="question" type="string" required>
+The question to be submitted to the LLM
+</ParamField>
+
+### Response
+___
+<ResponseField name="project" type="string">
+UUID associated with a project
+</ResponseField>
+<ResponseField name="_id" type="string">
+The ID associated with the conversation.
+</ResponseField>
+<ResponseField name="messages" type="array">
+Array containing conversation threads associated with the user identifier
+</ResponseField>
+
+<ResponseExample>
+   ```json 200
+{
+  "_id": "Conversation Id associated with the conversation.",
+  "project": "UUID associated with a project",
+  "messages" : []
+}
+```
+```json 400
+{
+  "status": 400,
+  "code": "Error code",
+  "moreInfo": "Link to read about the error "
+}
+```
+```json 401
+{
+  "status": 401,
+  "msg": "Api key is not valid"
+}
+```
+```json 403
+{
+  "status": 403,
+  "msg": "Forbidden"
+}
+```
+```json 500
+{
+  "status": 500,
+  "msg": "Server Error"
+}
+```
+</ResponseExample>
+
+

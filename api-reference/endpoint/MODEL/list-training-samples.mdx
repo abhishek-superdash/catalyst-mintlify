@@ -1,0 +1,50 @@
+---
+title: 'List all Training Samples'
+openapi: 'GET v1/trainingSamples/listTrainingSamples/{:projectId}'
+---
+### Authorizations
+<ParamField header="x-api-key" type="string" required>
+API key associated with your project/workspace
+</ParamField>
+
+
+
+### Response
+___
+
+<ResponseField  type="array">
+Array containing all training samples
+</ResponseField>
+
+<ResponseExample>
+   ```json 200
+[{"trainingId": "sampleTrainingId", "query" : "this is a query", "response": "this is a response", "trainingStatus":"UNAPPROVED/APPROVED/TRAINED", modelUsed: "model used to generate response"}]
+```
+```json 400
+{
+  "status": 400,
+  "code": "Error code",
+  "moreInfo": "Link to read about the error "
+}
+```
+```json 401
+{
+  "status": 401,
+  "msg": "Api key is not valid"
+}
+```
+```json 403
+{
+  "status": 403,
+  "msg": "Forbidden"
+}
+```
+```json 500
+{
+  "status": 500,
+  "msg": "Server Error"
+}
+```
+</ResponseExample>
+
+

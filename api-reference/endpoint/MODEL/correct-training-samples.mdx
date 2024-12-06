@@ -1,0 +1,67 @@
+---
+title: 'Correct Training Sample'
+openapi: 'POST /v1/trainingsamples/correctresponse/{:projectId}/{:trainingId}'
+description: "Update the response associated with a query in a specific training sample. Automatically sets the status to APPROVED."
+---
+### Authorizations
+<ParamField header="x-api-key" type="string" required>
+API key associated with your project/workspace
+</ParamField>
+
+### Path Parameters
+<ParamField path="projectId" type="string" required>
+The unique identifier of the project associated with the training sample.
+</ParamField>
+<ParamField path="trainingId" type="string" required>
+The unique identifier of the training sample to be corrected.
+</ParamField>
+
+
+
+### Response
+___
+<ResponseField name="msg" type="object">
+Confirmation message indicating whether the document updated succesfully
+</ResponseField>
+
+
+<ResponseExample>
+   ```json 200
+{"msg" : "Document and status updated succesfully"}
+
+
+```
+```json 400
+{
+  "status": 400,
+  "code": "Error code",
+  "moreInfo": "Link to read about the error "
+}
+```
+```json 401
+{
+  "status": 401,
+  "msg": "Api key is not valid"
+}
+```
+```json 402
+{
+  "status": 402,
+  "msg": "Please upgrade your account to continue"
+}
+```
+```json 403
+{
+  "status": 403,
+  "msg": "Forbidden"
+}
+```
+```json 500
+{
+  "status": 500,
+  "msg": "Server Error"
+}
+```
+</ResponseExample>
+
+

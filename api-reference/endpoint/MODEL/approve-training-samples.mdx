@@ -1,0 +1,70 @@
+---
+title: 'Approve Training Sample'
+openapi: 'POST /v1/trainingSamples/approveTrainingSample/{:projectId}/{:trainingId}'
+description: "Sets the status pre-existing training sample defined by the trainingId supplied to APPROVED, indicating the sample is ready and can be used for training."
+---
+### Authorizations
+<ParamField header="x-api-key" type="string" required>
+API key associated with your project/workspace
+</ParamField>
+
+### Path Parameters
+<ParamField path="projectId" type="string" required>
+The projectId of your Superdash project/workspace
+</ParamField>
+<ParamField path="trainingId" type="string" required>
+The unique identifier for the specific training sample that needs to be approved.
+</ParamField>
+
+### Body Parameters
+___
+<ParamField body="addToKnowledgeBase" type="boolean" required>
+A boolean value indicating whether the approved training sample should be added to the knowledge base.
+</ParamField>
+
+### Response
+___
+<ResponseField name="msg" type="object">
+Confirmation message indicating whether the sample updated successfully or not.
+</ResponseField>
+
+
+<ResponseExample>
+   ```json 200
+{"msg" : "Status updated succesfully"}
+
+```
+```json 400
+{
+  "status": 400,
+  "code": "Error code",
+  "moreInfo": "Link to read about the error "
+}
+```
+```json 401
+{
+  "status": 401,
+  "msg": "Api key is not valid"
+}
+```
+```json 402
+{
+  "status": 402,
+  "msg": "Please upgrade your account to continue"
+}
+```
+```json 403
+{
+  "status": 403,
+  "msg": "Forbidden"
+}
+```
+```json 500
+{
+  "status": 500,
+  "msg": "Server Error"
+}
+```
+</ResponseExample>
+
+
