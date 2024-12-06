@@ -17,7 +17,7 @@
     }
   },
   "api": {
-    "baseUrl": "https://voiceapi.superdashhq.com"
+    "baseUrl": "https://api.superdashhq.com/api/"
   },
   "topbarLinks": [
     {
