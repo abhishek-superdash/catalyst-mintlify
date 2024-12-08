@@ -1,0 +1,85 @@
+---
+title: 'Get Knowledge Base Corpus Status'
+openapi: 'GET /api/v1/knowledgeBase/corpusstatus/{projectId}'
+description: "Get details of documents and paragraphs uploaded to the knowledge base."
+---
+
+### Authorizations
+
+<ParamField header="x-api-key" type="string" required>
+  API key associated with your project/workspace.
+</ParamField>
+
+---
+
+### Path Parameters
+
+<ParamField path="projectId" type="string" required>
+  The UUID associated with the project/workspace.
+</ParamField>
+
+---
+
+### Response
+
+<ResponseField name="data" type="array">
+An array of objects containing details of files uploaded to the project. Each object includes:
+- **filename** (string): Name of the file.
+- **state** (string): Status of the file (e.g., "finished").
+- **eTag** (string): Unique identifier for the uploaded file.
+- **location** (string): URL of the uploaded file.
+- **uploadDate** (number): Timestamp of when the file was uploaded.
+</ResponseField>
+
+---
+
+### Response Example
+<ResponseExample>
+
+```json 200
+{
+  "data": [
+    {
+      "filename": "sample.pdf",
+      "state": "finished",
+      "eTag": "sample-alphanumeric-etag",
+      "location": "https://sample-upload-location.url",
+      "uploadDate": 1714484383438
+    }
+  ]
+}
+
+```
+```json 400
+{
+  "status": 400,
+  "msg": "Bad request"
+}
+```
+```json 401
+{
+  "status": 401,
+  "msg": "Api key is not valid"
+}
+```
+```json 402
+{
+  "status": 402,
+  "msg": "Please upgrade your account to continue"
+}
+```
+```json 403
+{
+  "status": 403,
+  "msg": "Forbidden"
+}
+```
+```json 500
+{
+  "status": 500,
+  "msg": "Server Error"
+}
+```
+</ResponseExample>
+
+

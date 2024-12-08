@@ -53,6 +53,19 @@
         "api-reference/endpoint/CHAT/continue-conversation",
         "api-reference/endpoint/CHAT/fetch-conversation"
       ]
+    },
+    {
+      "group": "KB",
+      "pages": [
+        "api-reference/endpoint/KB/upload-KB",
+        "api-reference/endpoint/KB/get-KB-status"
+      ]
+    }, {
+      "group": "EXTRACTION",
+      "pages": [
+        "api-reference/endpoint/EXTRACTION/extraction-basic-setup",
+        "api-reference/endpoint/EXTRACTION/extraction-specific-conversation"
+      ]
     }
   ],
   "footerSocials": {

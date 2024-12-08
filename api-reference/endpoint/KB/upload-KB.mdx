@@ -1,0 +1,105 @@
+---
+title: 'Upload to Knowledge Base'
+openapi: 'POST v1/knowledgeBase/upload/{:projectId}'
+description: "Upload single or multiple documents to a project's knowlegebase"
+---
+### Authorizations
+
+<ParamField header="x-api-key" type="string" required>
+  API key associated with your project/workspace.
+</ParamField>
+<ParamField header="content-type" type="string" required>
+  Media type of the request. Must be `multipart/form-data`.
+</ParamField>
+
+
+### Path Parameters
+
+<ParamField path="projectId" type="string" required>
+  The UUID associated with the project/workspace.
+</ParamField>
+
+
+### Body Parameters
+
+<ParamField body="files" type="array[file]" required>
+  List of files to upload. Supported formats: `.pdf`, `.doc`, `.docx`, `.xls`, `.xlsx`, `.rtf`, `.txt`.  
+  Ensure each file does not exceed 15MB.
+</ParamField>
+
+
+### Response
+___
+<ResponseField name="filesProcessed" type="array">
+An array of objects with (filename, etag) of files processed.
+</ResponseField>
+<ResponseField name="message" type="string">
+optional message in case of partial success of upload
+</ResponseField>
+
+<ResponseExample>
+   ```json 200
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "filesProcessed": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "filename": {
+              "type": "string"
+            },
+            "etag": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "filename",
+            "etag"
+          ]
+        }
+      ]
+    },
+    "msg": {
+      "type": "string"
+    }
+  }
+}
+
+```
+```json 400
+{
+  "status": 400,
+  "msg": "Bad request"
+}
+```
+```json 401
+{
+  "status": 401,
+  "msg": "Api key is not valid"
+}
+```
+```json 402
+{
+  "status": 402,
+  "msg": "Please upgrade your account to continue"
+}
+```
+```json 403
+{
+  "status": 403,
+  "msg": "Forbidden"
+}
+```
+```json 500
+{
+  "status": 500,
+  "msg": "Server Error"
+}
+```
+</ResponseExample>
+
+

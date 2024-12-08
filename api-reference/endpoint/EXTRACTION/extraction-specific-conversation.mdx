@@ -1,0 +1,70 @@
+---
+title: 'Extract Conversation Data API'
+openapi: 'POST /v1/webhookstatus/extractConversationData/{:projectId}/{:conversationId}'
+description: "Retrieve essential key-value pairs from each of your conversations effortlessly using our API."
+---
+
+<Warning>
+  The Extraction API will fail if custom extraction variables and webhooks are not configured in your dashboard. Please ensure both are set up before making API requests.
+  [read here](/docs/mintlify-docs/api-reference/endpoint/EXTRACTION/extraction-basic-setup.mdx)
+</Warning>
+
+
+
+
+### Authorizations
+<ParamField header="x-api-key" type="string" required>
+API key associated with your project/workspace
+</ParamField>
+
+### Path Parameters
+<ParamField path="projectId" type="string" required>
+Your unique project identifier within SuperDashHQ.
+</ParamField>
+<ParamField path="conversationId" type="string" required>
+The unique identifier of the conversation you want to extract data from.
+</ParamField>
+
+
+
+### Response
+___
+<ResponseField name="msg" type="object">
+The API will respond with whether the conversation was successfully passed for extraction or not. The extracted details will be sent to your registered webhook immediately.
+</ResponseField>
+
+
+<ResponseExample>
+   ```json 200
+Retry successful
+
+
+```
+```json 400
+{
+  "msg": "Bad request"
+}
+```
+```json 401
+{
+  "msg": "Api key is not valid"
+}
+```
+```json 402
+{
+  "msg": "Please upgrade your account to continue"
+}
+```
+```json 403
+{
+  "msg": "Forbidden"
+}
+```
+```json 500
+{
+  "msg": "Server Error"
+}
+```
+</ResponseExample>
+
+
