@@ -17,7 +17,7 @@
     }
   },
   "api": {
-    "baseUrl": "https://api.superdashhq.com/api/"
+    "baseUrl": "https://api.superdashhq.com/api"
   },
   "topbarLinks": [
     {
