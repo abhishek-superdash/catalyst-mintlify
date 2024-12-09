@@ -124,7 +124,6 @@
                       }
                     },
                     "example": {
-                      "status": 400,
                       "code": "Error code",
                       "moreInfo": "Link to read about the error"
                     }
@@ -145,7 +144,6 @@
                       }
                     },
                     "example": {
-                      "status": 401,
                       "msg": "API key is not valid"
                     }
                   }
@@ -165,7 +163,6 @@
                       }
                     },
                     "example": {
-                      "status": 402,
                       "msg": "Please upgrade your account to continue"
                     }
                   }
@@ -185,7 +182,6 @@
                       }
                     },
                     "example": {
-                      "status": 403,
                       "msg": "API key is not valid"
                     }
                   }
@@ -205,7 +201,6 @@
                       }
                     },
                     "example": {
-                      "status": 500,
                       "msg": "Server Error"
                     }
                   }
