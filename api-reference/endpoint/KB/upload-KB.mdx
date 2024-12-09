@@ -40,33 +40,13 @@ optional message in case of partial success of upload
 <ResponseExample>
    ```json 200
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "type": "object",
-  "properties": {
-    "filesProcessed": {
-      "type": "array",
-      "items": [
+    "filesProcessed": [
         {
-          "type": "object",
-          "properties": {
-            "filename": {
-              "type": "string"
-            },
-            "etag": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "filename",
-            "etag"
-          ]
+          "fileName": "string",
+          "etag": "string"
         }
-      ]
-    },
-    "msg": {
-      "type": "string"
-    }
-  }
+      ],
+    "msg": "string"
 }
 
 ```

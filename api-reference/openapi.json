@@ -124,7 +124,7 @@
                       }
                     },
                     "example": {
-                      "message": "Error message"
+                      "msg": "Error message"
                       }
                   }
                 }
@@ -310,7 +310,7 @@
                     }
                   },
                   "example": {
-                    "message": "Error message"
+                    "msg": "Error message"
                   }
                 }
               }
