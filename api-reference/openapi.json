@@ -337,7 +337,6 @@
                     }
                   },
                   "example": {
-                    "status": 401,
                     "msg": "Api key is not valid"
                   }
                 }
@@ -357,7 +356,6 @@
                     }
                   },
                   "example": {
-                    "status": 402,
                     "msg": "Please upgrade your account to continue"
                   }
                 }
@@ -377,7 +375,6 @@
                     }
                   },
                   "example": {
-                    "status": 403,
                     "msg": "Api key is not valid"
                   }
                 }
@@ -397,7 +394,6 @@
                     }
                   },
                   "example": {
-                    "status": 500,
                     "msg": "Server Error"
                   }
                 }
@@ -523,7 +519,6 @@
                     }
                   },
                   "example": {
-                    "status": 401,
                     "msg": "Api key is not valid"
                   }
                 }
@@ -543,7 +538,6 @@
                     }
                   },
                   "example": {
-                    "status": 402,
                     "msg": "Please upgrade your account to continue"
                   }
                 }
@@ -563,7 +557,6 @@
                     }
                   },
                   "example": {
-                    "status": 403,
                     "msg": "Api key is not valid"
                   }
                 }
@@ -583,7 +576,6 @@
                     }
                   },
                   "example": {
-                    "status": 500,
                     "msg": "Server Error"
                   }
                 }
@@ -708,7 +700,6 @@
                     }
                   },
                   "example": {
-                    "status": 401,
                     "msg": "Api key is not valid"
                   }
                 }
@@ -729,7 +720,6 @@
                     }
                   },
                   "example": {
-                    "status": 402,
                     "msg": "Please upgrade your account to continue"
                   }
                 }
@@ -750,7 +740,6 @@
                     }
                   },
                   "example": {
-                    "status": 403,
                     "msg": "Forbidden"
                   }
                 }
@@ -770,7 +759,6 @@
                     }
                   },
                   "example": {
-                    "status": 500,
                     "msg": "Server Error"
                   }
                 }
