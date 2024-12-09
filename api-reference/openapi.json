@@ -311,9 +311,7 @@
                     }
                   },
                   "example": {
-                    "status": 400,
-                    "code": "Error code",
-                    "moreInfo": "Link to read about the error "
+                    "message": "Error message"
                   }
                 }
               }
