@@ -7,7 +7,31 @@ description: "How to configure your extraction setup"
 
 <Steps>
   <Step title="First Step">
-    Log in to the Superdash Dashboard, navigate to **Modules > Extraction**, and define the custom variables you need to extract for your workspace.
+    Log in to the Superdash Dashboard, navigate to **Modules > Extraction**, and define the custom variables you need to extract for your workspace. 
+    
+    By default, the following are automatically extracted and passed to the webhook.
+    ### Call
+    ```json
+     {
+      "summary": "summary of the conversation",
+      "conversation": "transcript of the conversation",
+      "conversationId": "Id of the conversation",
+      "CallId": "Id of the call",
+      "callDuration": "Duration of the call",
+      "callStartTime": "Start time of the call"
+    }
+     ```
+     ### Sms
+     ```json
+     {
+      "summary": "summary of the conversation",
+      "conversation": "transcript of the conversation",
+      "conversationId": "Id of the conversation",
+      "CallId": "Id of the call",
+      "callDuration": "Duration of the call",
+      "callStartTime": "Start time of the call"
+    }
+     ```
   </Step>
   <Step title="Second Step">
     Navigate to **Modules > Webhooks** and add your custom webhook to receive the extracted data.
