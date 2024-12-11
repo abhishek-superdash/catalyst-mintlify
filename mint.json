@@ -33,12 +33,12 @@
   ],
   "navigation": [
     {
-      "group": "Campaign",
-      "pages": ["api-reference/endpoint/Campaign/create-campaign"]
-    },
-    {
       "group": "Call",
       "pages": ["api-reference/endpoint/Calls/place-phone-calls"]
+    },
+    {
+      "group": "Campaign",
+      "pages": ["api-reference/endpoint/Campaign/create-campaign"]
     },
     {
       "group": "SMS",
