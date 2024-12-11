@@ -33,11 +33,12 @@
   ],
   "navigation": [
     {
+      "group": "Campaign",
+      "pages": ["api-reference/endpoint/Campaign/create-campaign"]
+    },
+    {
       "group": "Call",
-      "pages": [
-        "api-reference/endpoint/Calls/place-phone-calls",
-        "api-reference/endpoint/Calls/place-phone-calls-campaigns"
-      ]
+      "pages": ["api-reference/endpoint/Calls/place-phone-calls"]
     },
     {
       "group": "SMS",
@@ -60,7 +61,8 @@
         "api-reference/endpoint/KB/upload-KB",
         "api-reference/endpoint/KB/get-KB-status"
       ]
-    }, {
+    },
+    {
       "group": "EXTRACTION",
       "pages": [
         "api-reference/endpoint/EXTRACTION/extraction-basic-setup",

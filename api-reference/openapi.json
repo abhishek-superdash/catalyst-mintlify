@@ -38,15 +38,15 @@
                   "properties": {
                     "fromNumber": {
                       "type": "string",
-                      "description": "The number from which the call or SMS will be sent"
+                      "description": "Sender's number"
                     },
                     "toNumber": {
                       "type": "string",
-                      "description": "The number to which the call or SMS will be sent"
+                      "description": "Recipient's number"
                     },
                     "message": {
                       "type": "string",
-                      "description": "The message content (optional, required for SMS campaigns)",
+                      "description": "The message content (Required for SMS)",
                       "nullable": true
                     },
                     "triggerType": {
@@ -57,7 +57,17 @@
                     "campaignType": {
                       "type": "string",
                       "description": "The type of campaign",
-                      "enum": ["SMS", "CALL"]
+                      "enum": ["SMS", "CALL", "WHATSAPP"]
+                    },
+                    "templateName": {
+                      "type": "string",
+                      "description": "Name of the approved WhatsApp template (Required for WHATSAPP)",
+                      "nullable": true
+                    },
+                    "templateLanguage": {
+                      "type": "string",
+                      "description": "Language of the template (Required for WHATSAPP)",
+                      "nullable": true
                     },
                     "attributes": {
                       "type": "object",
