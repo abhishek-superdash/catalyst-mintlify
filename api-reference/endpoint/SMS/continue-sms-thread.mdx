@@ -1,5 +1,111 @@
 ---
-title: 'Continue a SMS Thread'
-openapi: 'POST /v1/twilio/addtosmsthread/{projectID}'
-description: "Use this API endpoint to continue an existing conversation with a user, enabling the agent to reference and utilize prior interactions with the customer."
+title: 'Continue a SMS Conversation'
+api: 'POST /v1/sms/addToSMSThread/{assistantId}'
+description: "Use this API endpoint to continue a conversation via SMS"
 ---
+### Authorizations
+<ParamField header="x-api-key" type="string" required>
+API key associated with your workspace
+</ParamField>
+
+
+### Path Parameters
+___
+<ParamField path="assistantId" type="string" required>
+The UUID associated with an assistant
+</ParamField>
+ 
+
+
+
+### Body Parameters
+___
+<ParamField body="workspaceId" type="string" required>
+The UUID associated with a workspace.
+</ParamField>
+
+<ParamField body="toNumber" type="string" required>
+The number to which the sms will be sent
+</ParamField>
+
+<ParamField body="fromNumber" type="string" required>
+The number from which the sms will be sent and it should be linked to the assistant.
+</ParamField>
+
+<ParamField body="message" type="string" required>
+The SMS content.
+</ParamField>
+
+<ParamField body="attributes" type="object">
+Additional attributes for the SMS
+    <Expandable title="Properties">
+    <ParamField body="customField1" type="string">
+      Any value you want to dynamically access while placing the call, like first name, last name, company name, etc.
+    </ParamField>
+    <ParamField body="customField2" type="string">
+      Any value you want to dynamically access while placing the call, like first name, last name, company name, etc.
+    </ParamField>
+    <ParamField body="customField3" type="string">
+      Any value you want to dynamically access while placing the call, like first name, last name, company name, etc.
+    </ParamField>
+    <ParamField body="customField4" type="string">
+      Any value you want to dynamically access while placing the call, like first name, last name, company name, etc.
+    </ParamField>
+    <ParamField body="customField5" type="string">
+      Any value you want to dynamically access while placing the call, like first name, last name, company name, etc.
+    </ParamField>
+    <ParamField body="customField6" type="string">
+      Any value you want to dynamically access while placing the call, like first name, last name, company name, etc.
+    </ParamField>
+    <ParamField body="customField7" type="string">
+      Any value you want to dynamically access while placing the call, like first name, last name, company name, etc.
+    </ParamField>
+    <ParamField body="customField8" type="string">
+      Any value you want to dynamically access while placing the call, like first name, last name, company name, etc.
+    </ParamField>
+  </Expandable>
+</ParamField>
+
+ 
+
+### Response
+___
+<ResponseField name="msg" type="string">
+ The response message
+</ResponseField>
+ 
+
+<ResponseExample>
+   ```json 200
+{
+  "msg": "Outbound SMS succesfully sent with id: messageId",
+}
+```
+```json 400
+{
+  "msg": "Bad request"
+}
+```
+```json 401
+{
+  "msg": "Api key is not valid"
+}
+```
+```json 402
+{
+  "msg": "Please upgrade your account to continue"
+}
+```
+```json 403
+{
+  "msg": "Forbidden"
+}
+```
+```json 500
+{
+  "msg": "Server Error"
+}
+```
+</ResponseExample>
+
+

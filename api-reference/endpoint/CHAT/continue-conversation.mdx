@@ -13,17 +13,25 @@ ___
 <Note>Provide either conversationId or userIdentifier, but not both.</Note>
 
 <ParamField body="conversationId" type="string">
-  An optional parameter to identify a conversation.
+  A unique identifier for an existing conversation. Use this parameter to continue a specific conversation. 
 </ParamField>
-<ParamField body="userIdentifier" type="string">
-  An optional parameter to uniquely identify a conversation. Useful for storing each conversation against a specific customer identifier.
+
+<ParamField body="assistantId" type="string" required>
+The UUID associated with an assistant.
 </ParamField>
-<ParamField body="projectId" type="string" required>
-  The UUID associated with a project/workspace.
+
+<ParamField body="userIdentifier" type="string" required>
+  A unique identifier associated with a user or customer. Use this parameter to continue a conversation based on the user's history.
 </ParamField>
+
+<ParamField body="workspaceId" type="string" required>
+  The UUID associated with a workspace.
+</ParamField>
+
 <ParamField body="question" type="string" required>
   The question to be submitted to the LLM.
 </ParamField>
+
 <ValidationRule type="oneOf">
   Either conversationId or userIdentifier must be provided, but not both.
 </ValidationRule>

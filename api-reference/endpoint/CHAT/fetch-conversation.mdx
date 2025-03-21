@@ -1,6 +1,6 @@
 ---
 title: 'Fetch conversation(s)'
-api: 'GET /v1/conversation/project/{:projectId}/{:userIdentifier}'
+api: 'GET /v1/conversation/workspace/{workspaceId}/{userIdentifier}'
 description: "Use this API endpoint to retrieve the complete conversation linked to a specific user identifier."
 ---
 ### Authorizations
@@ -9,26 +9,31 @@ API key associated with your project/workspace
 </ParamField>
 
 
-### Body Parameters
+### Path Parameters
 ___
-<ParamField body="userIdentifier" type="string" required>
-Unique customerID used to store the customer conversation.
-</ParamField>
-<ParamField body="projectId" type="string" required>
+<ParamField path="workspaceId" type="string" required>
 The UUID associated with a project/workspace.
 </ParamField>
-<ParamField body="question" type="string" required>
-The question to be submitted to the LLM
+ 
+<ParamField path="userIdentifier" type="string" required>
+Unique customerID used to store the customer conversation.
 </ParamField>
 
 ### Response
 ___
-<ResponseField name="project" type="string">
-UUID associated with a project
-</ResponseField>
 <ResponseField name="_id" type="string">
 The ID associated with the conversation.
 </ResponseField>
+
+<ResponseField name="workspace" type="string">
+UUID associated with a workspace
+</ResponseField>
+
+<ResponseField name="attributes" type="object">
+The user identifier
+</ResponseField>
+
+
 <ResponseField name="messages" type="array">
 Array containing conversation threads associated with the user identifier
 </ResponseField>
@@ -37,8 +42,9 @@ Array containing conversation threads associated with the user identifier
    ```json 200
 {
   "_id": "Conversation Id associated with the conversation.",
-  "project": "UUID associated with a project",
-  "messages" : []
+  "workspace": "UUID associated with a workspace",
+  "messages" : [],
+  "attributes": {}
 }
 ```
 ```json 400
@@ -56,10 +62,14 @@ Array containing conversation threads associated with the user identifier
 {
   "msg": "Forbidden"
 }
+```json 404
+{
+  "msg": "Conversation not found"
+}
 ```
 ```json 500
 {
-  "msg": "Server Error"
+  "msg": "Internal Server Error"
 }
 ```
 </ResponseExample>

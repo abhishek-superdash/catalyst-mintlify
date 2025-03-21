@@ -1,20 +1,24 @@
 ---
 title: 'Place Phone Calls'
-api: 'POST /v1/voice/placeoutboundcall/{projectID}'
+api: 'POST /v1/voice/placeoutboundcall/{workspaceId}/{assistantId}'
 description: "Use this API endpoint to immediately initiate a call to a specified number."
 ---
 ### Authorizations
 <ParamField header="x-api-key" type="string" required/>
 
 ### Path Parameters
-<ParamField path="projectID" type="string" required>
-Your workspace ID
+<ParamField path="workspaceId" type="string" required>
+The ID associated with a workspace.
+</ParamField>
+
+<ParamField path="assistantId" type="string" required>
+The ID associated with an assistant.
 </ParamField>
 
 ### Body Parameters
 ___
 <ParamField body="fromNumber" type="string" required>
-The number from which the call will be placed
+The number from which the call will be placed and it should be linked to the assistant.
 </ParamField>
 <ParamField body="toNumber" type="string" required>
 The number to which the call will be placed
@@ -31,6 +35,22 @@ Additional attributes for the call
     <ParamField body="customField3" type="string">
       Any value you want to dynamically access while placing the call, like first name, last name, company name, etc.
     </ParamField>
+    <ParamField body="customField4" type="string">
+      Any value you want to dynamically access while placing the call, like first name, last name, company name, etc.
+    </ParamField>
+    <ParamField body="customField5" type="string">
+      Any value you want to dynamically access while placing the call, like first name, last name, company name, etc.
+    </ParamField>
+    <ParamField body="customField6" type="string">
+      Any value you want to dynamically access while placing the call, like first name, last name, company name, etc.
+    </ParamField>
+    <ParamField body="customField7" type="string">
+      Any value you want to dynamically access while placing the call, like first name, last name, company name, etc.
+    </ParamField>
+    <ParamField body="customField8" type="string">
+      Any value you want to dynamically access while placing the call, like first name, last name, company name, etc.
+    </ParamField>
+    
   </Expandable>
 </ParamField>
 
@@ -41,13 +61,25 @@ ___
   Confirmation message indicating the call was placed
 </ResponseField>
 
+<ResponseField name="status" type="string">
+  The status of the call
+</ResponseField>
+
+<ResponseField name="callId" type="string">
+  A newly created Id for the call
+</ResponseField>
+
 <ResponseExample>
    ```json 200
-{ "msg": "call placed to {toNumber}" }
+{ 
+"msg": "Call placed to {toNumber}",
+"status": "queued",
+"callId": "The UUID of the call"
+}
 ```
 ```json 400
 {
-"msg": "Error message"
+"msg": "string"
 }
 ```
 ```json 401

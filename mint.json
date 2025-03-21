@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Superdash",
+  "name": "Catalyst Superdash",
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg",
@@ -8,16 +8,16 @@
   },
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
+    "light": "#B4C0FC",
+    "primary": "#02012B",
+    "dark": "#FFFFFF",
     "anchors": {
       "from": "#0D9373",
       "to": "#07C983"
     }
   },
   "api": {
-    "baseUrl": "https://api.superdashhq.com/api"
+    "baseUrl": "https://catalystapi.superdashhq.com/api"
   },
   "topbarLinks": [
     {
@@ -33,21 +33,6 @@
   ],
   "navigation": [
     {
-      "group": "Call",
-      "pages": ["api-reference/endpoint/Calls/place-phone-calls"]
-    },
-    {
-      "group": "Campaign",
-      "pages": ["api-reference/endpoint/Campaign/create-campaign"]
-    },
-    {
-      "group": "SMS",
-      "pages": [
-        "api-reference/endpoint/SMS/new-sms-thread",
-        "api-reference/endpoint/SMS/continue-sms-thread"
-      ]
-    },
-    {
       "group": "CHAT",
       "pages": [
         "api-reference/endpoint/CHAT/new-conversation",
@@ -56,17 +41,16 @@
       ]
     },
     {
-      "group": "KB",
+      "group": "CALL",
       "pages": [
-        "api-reference/endpoint/KB/upload-KB",
-        "api-reference/endpoint/KB/get-KB-status"
+        "api-reference/endpoint/Calls/place-phone-calls"
       ]
     },
     {
-      "group": "EXTRACTION",
+      "group": "SMS",
       "pages": [
-        "api-reference/endpoint/EXTRACTION/extraction-basic-setup",
-        "api-reference/endpoint/EXTRACTION/extraction-specific-conversation"
+        "api-reference/endpoint/SMS/new-sms-thread",
+        "api-reference/endpoint/SMS/continue-sms-thread"
       ]
     }
   ],
