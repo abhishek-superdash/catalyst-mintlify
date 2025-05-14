@@ -52,6 +52,12 @@
         "api-reference/endpoint/SMS/new-sms-thread",
         "api-reference/endpoint/SMS/continue-sms-thread"
       ]
+    },
+    {
+      "group": "WhatsApp",
+      "pages": [
+        "api-reference/endpoint/Whatsapp/start-whatsapp-thread"
+      ]
     }
   ],
   "footerSocials": {

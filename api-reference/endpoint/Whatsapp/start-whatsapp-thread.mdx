@@ -1,0 +1,81 @@
+---
+title: 'Start a WhatsApp Conversation'
+api: 'POST /v1/whatsapp/manage/startWhatsAppThread/{workspaceId}/{assistantId}'
+description: "Endpoint to start a new WhatsApp Conversation with a template"
+---
+
+### Authorizations
+<ParamField header="x-api-key" type="string" required>
+API key associated with the Workspace
+</ParamField>
+
+### Path Parameters
+<ParamField path="workspaceId" type="string" required>
+The UUID of the Workspace
+</ParamField>
+
+<ParamField path="assistantId" type="string" required>
+The UUID of the Assistant
+</ParamField>
+
+### Body Parameters
+<ParamField body="toNumber" type="string" required>
+The Recipient's Phone Number with country code
+</ParamField>
+
+<ParamField body="templateName" type="string" required>
+The name of the WhatsApp Template to be sent
+</ParamField>
+
+<ParamField body="language" type="string" required>
+The language of the Whatsapp message template specified in ```templateName```
+</ParamField>
+
+<ParamField body="attributes" type="object" optional>
+The ```"Named Parameters"``` if any, to be used in the specified ```templateName``` WhatsApp Template  
+    <Expandable title="Named Parameters">
+        <ParamField body="parameterName" type="string">
+            Replace ```parameterName``` with the **actual parameter name** and its value
+        </ParamField>   
+    </Expandable>
+</ParamField>
+
+### Response
+<ResponseExample>
+    ```json 200
+    {
+        "msg": "Outbound WhatsApp Message succesfully sent",
+        "data": {
+            "contacts": [
+                {
+                    "input": "{toNumber}", // The toNumber of the recipient
+                    "wa_id": "{toNumber}" // The Whatsapp Id of the recipient
+                }
+            ],
+            "messages": [
+                {
+                    "id": "{whatsapp_message_Id}", // The WhatsApp Message Id of the sent message
+                    "message_status": "{message_status}" // The status of the sent message
+                }
+            ],
+            "phoneNumberId": "{phoneNumberId}", // The phone number Id
+            "conversationId": "{conversationId}" // The conversation Id
+        }   
+    }
+    ```
+    ```json 401
+    {
+        "msg": "Api key is not valid"
+    }
+    ```
+    ```json 409
+    {
+        "msg": "No WhatsApp Phone Number Ids found, please add phone numbers and try again" 
+    }
+    ```
+    ```json 500
+    {
+        "msg": "Internal Server Error"
+    }
+    ```
+</ResponseExample>
